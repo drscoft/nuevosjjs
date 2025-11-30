@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@keyframes delay-700 {
+  0% { opacity: 0; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.delay-700 {
+  animation: delay-700 2s ease-in-out;
+}
+
+@keyframes delay-1000 {
+  0% { opacity: 0; }
+  70% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.delay-1000 {
+  animation: delay-1000 3s ease-in-out;
+}
+
+/* Icon effect animations */
+@keyframes lightning-flash {
+  0% { opacity: 0; transform: scale(0.8); }
+  10% { opacity: 1; transform: scale(1.05); }
+  40% { opacity: 1; transform: scale(0.95); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes spark-pop {
+  0% { opacity: 0; transform: scale(0.6); }
+  20% { opacity: 1; transform: scale(1.2); }
+  60% { opacity: 1; transform: scale(0.9); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes storm-drop {
+  0% { opacity: 0; transform: translateY(-6px) scale(0.5); }
+  30% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(6px) scale(0.8); }
+}
+
+.icon-effect-wrapper { position: relative; display: inline-block; }
+.icon-effect-overlay {
+  pointer-events: none;
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+}
+.icon-lightning { animation: lightning-flash 700ms ease-in-out forwards; }
+.icon-spark { animation: spark-pop 600ms cubic-bezier(.2, .8, .2, 1) forwards; }
+.icon-storm { animation: storm-drop 900ms ease-in-out forwards; }
+
+.icon-hover-glow:hover { filter: drop-shadow(0 6px 10px rgba(16,185,129,0.15)); transform: translateY(-2px); transition: transform 180ms ease-in-out; }
+
+/* Respect users' reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .icon-lightning, .icon-spark, .icon-storm, .icon-hover-glow {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
