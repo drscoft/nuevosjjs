@@ -1,4 +1,4 @@
-import { ShieldIcon } from './Icons';
+import { ShieldIcon, ZapIcon } from './Icons';
 import { useState, useEffect } from 'react';
 import { useEffectContext } from '../context/EffectContext';
 
@@ -57,12 +57,13 @@ export default function Navigation() {
             <button
               aria-pressed={effectsEnabled}
               onClick={toggleEffects}
+              title="Alternar efectos"
               className={`ml-3 px-3 py-2 rounded-full text-sm flex items-center space-x-2 transition-colors duration-200 ${
                 effectsEnabled ? 'bg-emerald-500 text-white' : 'bg-gray-800 text-gray-300'
               }`}
             >
               <span className="text-xs">Efectos</span>
-              <span className="text-lg font-bold">{effectsEnabled ? '⚡' : '🚫'}</span>
+              <ZapIcon className={`h-4 w-4 ${effectsEnabled ? 'text-white' : 'text-gray-300'}`} triggerOn="none" />
             </button>
           </div>
         </div>

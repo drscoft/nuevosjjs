@@ -15,6 +15,10 @@ export const EffectProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     try {
       const stored = localStorage.getItem('effectsEnabled');
       if (stored === 'false') return false;
+      if (stored === 'true') return true;
+      if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return false;
+      }
       return true;
     } catch (err) {
       return true;
